@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <nav class="navbar navbar-dark bg-primary">
+    <div>
+      <a class="navbar-brand" href="#">Cram Cards</a>
+    </div>
+    <div>
+    </div>
+  </nav>
+
+  <app-card class="p-2 flex-grow-1" [card]="currentCard" (answer)="sendAnswer($event)"></app-card>
+</div>
+
+<div class="m-2 card">
+  <div class="card-header">Info</div>
+  <div class="card-body">
+    <b>Card: {{currentCard?.frente}} </b> <br>
+    {{ currentCardInfo | json  }}
+  </div>
+  <div class="card-body">
+    <b>Todos os cards</b> <br>
+    {{ allCardsInfo | json  }}
+  </div>
+</div>

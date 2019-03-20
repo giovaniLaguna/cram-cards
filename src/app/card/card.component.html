@@ -1,0 +1,29 @@
+<div class="d-flex flex-column flex-grow-1" *ngIf="card"
+  (document:keydown.1)="errei()"
+  (document:keydown.2)="acertei()"
+  (document:keydown.space)="mostrarResposta()">
+
+  <div class="frente mb-1 card flex-grow-1">
+    <div class="card-body h1 d-flex justify-content-center align-items-center text-centered" (keyup.enter)="mostrarResposta()" (click)="mostrarResposta()">
+      <span [innerHTML]="card?.frente"></span>
+    </div>
+  </div>
+  <div class="verso mb-1 card flex-grow-1" *ngIf="mode == 'resposta'">
+    <div class="card-body h1 d-flex justify-content-center align-items-center text-centered" >
+      <span [innerHTML]="card?.verso"></span>
+    </div>
+  </div>
+  <input #textoLivreInput
+    class="form-control my-1"
+   type="text" 
+   [(ngModel)]="textoLivre"
+   (keyup.enter)="mostrarResposta()"
+   [disabled]="mode == 'resposta'">
+  <div class="acoes d-flex">
+    <button class="btn btn-primary flex-grow-1" (click)="mostrarResposta()" *ngIf="mode == 'pergunta'">Mostrar Resposta</button>
+    <ng-container *ngIf="mode == 'resposta'">
+      <button class="btn btn-danger flex-grow-1 mr-1" (click)="errei()">Errei</button>
+      <button class="btn btn-success flex-grow-1" (click)="acertei()">Acertei</button>
+    </ng-container>
+  </div>
+</div>
